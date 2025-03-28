@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Set the base URL for resolving non-relative module names
+    "paths": {
+      "@/*": ["src/*"] // Map '@' to the 'src' directory
+    }
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
