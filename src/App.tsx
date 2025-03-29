@@ -139,19 +139,19 @@ function App() {
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-[12px] md:gap-[16px] mb-[64px] md:mb-[96px]">
             <button 
-              className="px-[32px] py-[16px] bg-white text-black rounded-full hover:bg-[#EAEAEA]"
+              className="px-[32px] py-[16px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
               style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
             >
               Get Started 
               <ArrowRight size={20} />
             </button>
             
-            <button 
-              className="px-[32px] py-[16px] border border-[#444444] rounded-full hover:bg-[#222222] hidden sm:inline"
+            {/* <button 
+              className="px-[32px] py-[16px] border border-[#444444] rounded-full hover:bg-[#222222] md:hidden"
               style={{ display: 'flex', alignItems: 'center' }}
             >
               Watch Demo
-            </button>
+            </button> */}
           </div>
 
           {/* Dashboard Preview */}
