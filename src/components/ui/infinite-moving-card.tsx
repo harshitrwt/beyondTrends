@@ -61,6 +61,7 @@ export const InfiniteMovingCards = ({
     }
   };
   return (
+    
     <div
       ref={containerRef}
       className={cn(
@@ -78,7 +79,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-purple-700 bg-black px-8 py-6 md:w-[450px] shadow-lg overflow-hidden"
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-black bg-black px-8 py-6 md:w-[450px] shadow-lg overflow-hidden"
             key={item.name}
           >
             <div className="absolute inset-0 bg-purple-700 blur-[100px] opacity-40"></div>

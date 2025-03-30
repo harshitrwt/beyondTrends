@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion';
 import { Palette, Zap, Globe, BarChart, Clock, Database } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Features = () => {
   return (
     <section className="container mx-auto px-4 py-16 max-w-[1200px] md:mb-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        Platform Features
+      <h2 className="md:text-[7vh] text-3xl font-semibold text-center md:mb-32 mb-16 shadow-2xl">
+        Features
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {/* Main Feature Card */}
         <motion.div 
-          className="md:col-span-2 row-span-2 relative rounded-xl bg-black p-8 overflow-hidden shadow-purple-500/50 shadow-2xl"
+          className="md:col-span-2 row-span-2 relative rounded-sm bg-black p-8 overflow-hidden shadow-purple-500/50 shadow-2xl"
           whileHover={{ scale: 0.98 }}
         >
           <img
@@ -38,21 +39,24 @@ const Features = () => {
 
         {/* Performance Card */}
         <motion.div
-          className="rounded-xl bg-black p-6 shadow-purple-500/50 shadow-xl"
+          className="rounded-sm bg-black p-6 shadow-purple-500/50 shadow-xl"
           whileHover={{ y: -5 }}
         >
+          
           <img src="https://placedog.net/150/150" alt="Dog" className="w-16 h-16 rounded-full mx-auto mb-2" />
           <div className="flex flex-col items-center text-center">
             <Zap size={28} className="text-cyan-400 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Real-time Processing</h3>
             <p className="text-sm text-gray-300">Instant insights with <br />50ms response time</p>
+            <Link to="/VideoPage">
             <button className="mt-4 px-4 py-2 bg-purple-500 text-white rounded-lg">Try Now</button>
+            </Link>
           </div>
         </motion.div>
 
         {/* Global Card */}
         <motion.div 
-          className="rounded-xl bg-black p-6 shadow-purple-500/50 shadow-xl"
+          className="rounded-sm bg-black p-6 shadow-purple-500/50 shadow-xl"
           whileHover={{ rotate: 2 }}
         >
           <img src="https://placedog.net/140/140" alt="Dog" className="w-16 h-16 rounded-full mx-auto mb-2" />
@@ -67,7 +71,7 @@ const Features = () => {
 
         {/* Vertical Stats Card */}
         <motion.div
-          className="md:row-span-2 rounded-xl bg-black p-8 flex flex-col justify-between shadow-purple-500/50 shadow-xl"
+          className="md:row-span-2 rounded-sm bg-black p-8 flex flex-col justify-between shadow-purple-500/50 shadow-xl"
           whileHover={{ x: 5 }}
         >
           <img src="https://placedog.net/180/180" alt="Dog" className="w-20 h-20 rounded-full mb-4 mx-auto" />
@@ -87,7 +91,7 @@ const Features = () => {
 
         {/* Small Cards Row */}
         <motion.div
-          className="md:col-span-2 rounded-xl bg-black p-6 flex items-center justify-between h-[200px] shadow-purple-500/50 shadow-xl"
+          className="md:col-span-2 rounded-sm bg-black p-6 flex items-center justify-between h-[200px] shadow-purple-500/50 shadow-xl"
           whileHover={{ scale: 0.96 }}
         >
           <div className="flex items-center gap-3">
@@ -107,7 +111,7 @@ const Features = () => {
             </div>
           </div>
         </motion.div>
-        <h1 className='font-extrabold text-3xl w-[80vh] hidden'>One Step Solution</h1>
+        <h1 className='font-semibold md:text-[10vh] text-0 md:w-[100vh] w-full border 2 border-purple-900 p-5 bg-purple-900 shadow-purple-500/50 shadow-xl'>One Step Solution</h1>
       </div>
     </section>
   );

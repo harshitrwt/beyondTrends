@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import VideoPage from "./pages/VideoPage";
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react';
@@ -7,9 +9,12 @@ import Features from './components/Features';
 import Working from './components/Working';
 import Footer from './components/Footer';
 import { InfiniteMovingCards } from './components/ui/infinite-moving-card';
+import { CTAButton } from "./components/Checkout";
+import { MovingBorder } from "./components/ui/moving-border";
 
 
 function App() {
+  
   const dashboardRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
 
@@ -25,6 +30,8 @@ function App() {
       }
     };
 
+
+
     window.addEventListener('scroll', handleScroll);
     
     if (dashboardRef.current) {
@@ -35,11 +42,12 @@ function App() {
   }, []);
 
   return (
+    <>
     <div className="min-h-screen bg-[#000007] text-white">
       {/* Navigation */}
       <nav className="container mx-auto px-4 py-6">
         <div className="max-w-4xl mx-auto flex items-center justify-between relative z-10">
-          <div className="text-2xl font-bold">ScalePlus</div>
+          <div className="text-2xl font-bold text-pretty">BeyondTrends</div>
           
           {/* Mobile Menu Button */}
           <button 
@@ -91,7 +99,7 @@ function App() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center px-4 text-center overflow-hidden">
         {/* Background Image Adjustments */}
-        <div className="absolute inset-0 z-[1] h-[50vh]  md:w-full w-[70vh] md:h-[170vh]">
+        <div className="absolute inset-0 z-[1] h-[55vh]  md:w-full w-[70vh] md:h-[170vh]">
   {/* Background Image */}
   <img 
     src="https://images.unsplash.com/photo-1600673645627-1c47394132ac?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjBwdXJwbGV8ZW58MHx8MHx8fDA%3D" 
@@ -117,9 +125,9 @@ function App() {
         {/* Content Adjustments */}
         <div className="container mx-auto pt-[12px] relative z-[3]">
           {/* Announcement Banner */}
-          <div className="inline-block mx-auto mb-12 px-4 py-2 rounded-full bg-gray-800 border border-green-500">
+          <div className="inline-block mx-auto mb-8 md:mb-2 md:mt-10 mt-1 px-4 py-2 rounded-full bg-gray-800 border border-purple-700">
             <p className="text-sm flex items-center gap-2">
-             <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+             <span className="inline-block w-2 h-2 rounded-full bg-purple-700 animate-pulse"></span>
               Soon going to be public
             </p>
           </div>
@@ -127,7 +135,7 @@ function App() {
 
 
           {/* Hero Heading */}
-          <h1 className="text-[28px] md:text-[40px] lg:text-[64px] font-bold mb-[16px] md:mb-[24px] leading-tight">
+          <h1 className="text-[28px] md:text-[40px] lg:text-[64px] font-semibold mb-[16px] md:mb-[24px] leading-tight">
             Scale your business with<br />confidence
           </h1>
 
@@ -139,11 +147,11 @@ function App() {
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-[12px] md:gap-[16px] mb-[64px] md:mb-[96px]">
             <button 
-              className="px-[32px] py-[16px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
+              className="px-[24px] py-[10px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
               style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
             >
               Get Started 
-              <ArrowRight size={20} />
+              <ArrowRight className='w-10 h-10 rounded-full bg-purple-600 px-1 cursor-pointer' size={20} />
             </button>
             
             {/* <button 
@@ -216,10 +224,16 @@ function App() {
   pauseOnHover={true} 
   className="my-custom-class"/>
 
+        <CTAButton />
+
          <Footer />
        </section>
      </div>
+    </>
+    
    );
 }
 
 export default App;
+
+

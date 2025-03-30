@@ -1,62 +1,48 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Briefcase, Database, Cloud, Cpu, Layers, BarChart, Globe, Code, Zap } from 'lucide-react';
 
 const companies = [
-  'FutureWorks',
-  'DataFlow', 'CloudScale', 'SmartSys', 'NextGen',
-  'PeakTech', 'MetaVerse', 'ByteLogic', 'QuantumTech'
+  { name: 'FutureWorks', icon: <Briefcase /> },
+  { name: 'DataFlow', icon: <Database /> },
+  { name: 'CloudScale', icon: <Cloud /> },
+  { name: 'SmartSys', icon: <Cpu /> },
+  { name: 'NextGen', icon: <Layers /> },
+  { name: 'PeakTech', icon: <BarChart /> },
+  { name: 'MetaVerse', icon: <Globe /> },
+  { name: 'ByteLogic', icon: <Code /> },
+  { name: 'QuantumTech', icon: <Zap /> },
 ];
 
 const FloatingLogos: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const logos = container.getElementsByClassName('floating-logo');
-    
-    Array.from(logos).forEach((logo, index) => {
-      const element = logo as HTMLElement;
-      element.style.setProperty('--start-position', `${container.offsetWidth + 50}px`);
-      element.style.animationDelay = `${index * 2}s`;
-    });
-  }, []);
-
   return (
-    <div 
-      ref={containerRef}
-      className="relative h-16 max-w-4xl mx-auto overflow-hidden"
-    >
-      {companies.map((company, index) => (
-        <div
-          key={index}
-          className="floating-logo absolute whitespace-nowrap text-gray-400 text-lg font-bold opacity-80"
-          style={{
-            animation: 'floatLeft 20s linear infinite',
-            top: '50%',
-            transform: 'translateY(-50%)',
-          }}
-        >
-          {company}
-        </div>
-      ))}
+    <div className="relative m-auto overflow-hidden bg-black py-6 w-[1200px] md:mt-32 mt-10  md:mb-32 mb-10">
+      {/* Wrapper for infinite scrolling effect */}
+      <div className="flex whitespace-nowrap animate-scroll">
+        {/* Duplicated array to ensure seamless infinite scroll */}
+        {[...companies, ...companies, ...companies].map((company, index) => (
+          <div
+            key={index}
+            className="flex items-center space-x-6 px-8 text-white text-2xl font-bold opacity-90"
+          >
+            <div className="w-12 h-12 text-purple-400">{company.icon}</div>
+            <span>{company.name}</span>
+          </div>
+        ))}
+      </div>
 
       <style>{`
-        @keyframes floatLeft {
+        @keyframes scroll {
           from {
-            transform: translateX(var(--start-position));
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
+            transform: translateX(0);
           }
           to {
-            transform: translateX(-150px);
-            opacity: 0;
+            transform: translateX(-50%);
           }
+        }
+        .animate-scroll {
+          display: flex;
+          gap: 3rem;
+          animation: scroll 5s linear infinite; /* Reduced speed */
         }
       `}</style>
     </div>
