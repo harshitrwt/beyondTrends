@@ -22,10 +22,10 @@ const FloatingLogos: React.FC = () => {
         {[...companies, ...companies, ...companies].map((company, index) => (
           <div
             key={index}
-            className="flex items-center space-x-6 px-8 text-white text-2xl font-bold opacity-90"
+            className="flex items-center space-x-2 px-2 text-white text-2xl font-bold opacity-60"
           >
-            <div className="w-12 h-12 text-purple-400">{company.icon}</div>
-            <span>{company.name}</span>
+            <div className="w-6 h-6 text-purple-500">{company.icon}</div>
+            <span className='font-semibold md:text-3xl text-md'>{company.name}</span>
           </div>
         ))}
       </div>
@@ -42,7 +42,7 @@ const FloatingLogos: React.FC = () => {
         .animate-scroll {
           display: flex;
           gap: 3rem;
-          animation: scroll 5s linear infinite; /* Reduced speed */
+          animation: scroll 9s linear infinite; /* Reduced speed */
         }
       `}</style>
     </div>

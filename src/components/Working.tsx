@@ -75,12 +75,12 @@ export default function Working() {
       <h1 className="text-center md:text-[7vh] text-3xl font-semibold mb-8 mt-5 md:mt-40">How it works</h1>
       
       {/* Main Container */}
-      <section className="relative flex flex-col md:flex-row md:h-[60vh] items-center justify-between py-16 bg-black w-[90%] max-w-[1150px] mx-auto rounded-sm shadow-purple-700 shadow-xl md:mb-32 mb-20 overflow-hidden">
+      <section className="relative flex flex-col md:flex-row md:h-[60vh] h-[60vh] items-center justify-between py-16 bg-black w-[90%] max-w-[1150px] mx-auto rounded-sm shadow-purple-700 shadow-xl md:mb-32 mb-20 overflow-hidden">
         
         {/* Text Section */}
         <WavyBackground >
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2 p-6 md:p-12">
-          <div className="flex items-center space-x-3 mb-4">
+          <div className="flex items-center space-x-3 mb-4 ">
             <CheckCircle className="text-[#c4fa57] w-10 h-10" />
             <h2 className="text-2xl md:text-3xl font-bold text-white">Do More, Stress Less</h2>
           </div>
