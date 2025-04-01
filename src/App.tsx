@@ -234,6 +234,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import VideoPage from "./pages/VideoPage";
 import Home from "./pages/HomePage";  // Create this file to move your existing homepage layout
+import ArticlesPage from "./pages/ArticlesPage";
+import RepoPage from "./pages/RepoPage";
 
 function App() {
   return (
@@ -241,6 +243,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />  {/* Main homepage */}
         <Route path="/VideoPage" element={<VideoPage />} /> {/* Example additional page */}
+        <Route path="/ArticlesPage" element={<ArticlesPage/>} /> {/* Example additional page */}
+        <Route path="/RepoPage" element={<RepoPage/>} />
       </Routes>
     </Router>
   );

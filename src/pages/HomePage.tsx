@@ -264,7 +264,7 @@ function Home() {
                     {/* Content Adjustments */}
                     <div className="container mx-auto pt-[12px] relative z-[3]">
                         {/* Announcement Banner */}
-                        <div className="inline-block mx-auto mb-8 md:mb-2 md:mt-10 mt-1 px-4 py-2 rounded-full bg-gray-800 border border-purple-700">
+                        <div className="inline-block mx-auto mb-8 md:mb-8 md:mt-10 mt-1 px-4 py-2 rounded-full bg-gray-800 border border-purple-700">
                             <p className="text-sm flex items-center gap-2">
                                 <span className="inline-block w-2 h-2 rounded-full bg-purple-700 animate-pulse"></span>
                                 Soon going to be public
@@ -274,23 +274,23 @@ function Home() {
 
 
                         {/* Hero Heading */}
-                        <h1 className="text-[28px] md:text-[40px] lg:text-[64px] font-semibold mb-[16px] md:mb-[24px] leading-tight">
-                            Scale your business with<br />confidence
+                        <h1 className="text-[21px] md:text-[40px] lg:text-[64px] font-semibold mb-[16px] md:mb-[24px] leading-tight">
+                        Grow faster, smarter, and stay ahead with <br></br>content very few people knows
                         </h1>
 
                         {/* Hero Subtext */}
-                        <p className="text-base md:text-lg lg:text-xl text-[#888888] mb-[32px] max-w-xl mx-auto leading-relaxed">
+                        <p className="text-[16px] md:text-lg lg:text-xl text-[#888888] mb-[32px] max-w-xl mx-auto leading-relaxed">
                             The all-in-one platform that helps you scale your business with powerful analytics, automation, and personalized insights.
                         </p>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col md:flex-row items-center justify-center gap-[12px] md:gap-[16px] mb-[64px] md:mb-[96px]">
                             <button
-                                className="px-[24px] py-[10px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
+                                className="md:px-[24px] md:py-[10px] px-[10px] py-[7px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
                                 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
                             >
                                 Get Started
-                                <ArrowRight className='w-10 h-10 rounded-full bg-purple-600 px-1 cursor-pointer' size={20} />
+                                <ArrowRight className='w-10 h-10 rounded-full bg-purple-600 px-1 cursor-pointer text-white' size={20} />
                             </button>
 
                         </div>
