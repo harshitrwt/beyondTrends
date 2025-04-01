@@ -121,3 +121,68 @@ export default function Working() {
     </>
   );
 }
+
+
+
+// 'use client';
+// import { CheckCircle, ArrowRight } from 'lucide-react';
+// import { WavyBackground } from "../components/ui/wavy-background";
+// import { motion } from 'framer-motion';
+
+// export default function Working() {
+//   return (
+//     <>
+//       <h1 className="text-center md:text-[7vh] text-3xl font-semibold mb-8 mt-5 md:mt-40">How it works</h1>
+      
+//       {/* Main Container */}
+//       <section className="relative flex flex-col md:flex-row md:h-[60vh] h-[60vh] items-center justify-between py-16 bg-black w-[90%] max-w-[1150px] mx-auto rounded-sm shadow-purple-700 shadow-xl md:mb-32 mb-20 overflow-hidden">
+        
+//         {/* Text Section */}
+//         <WavyBackground>
+//           <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2 p-6 md:p-12">
+//             <div className="flex items-center space-x-3 mb-4 ">
+//               <CheckCircle className="text-[#c4fa57] w-10 h-10" />
+//               <h2 className="text-2xl md:text-3xl font-bold text-white">Do More, Stress Less</h2>
+//             </div>
+//             <p className="text-gray-300 text-base md:text-lg">
+//               Our platform automates tasks, organizes your workflow, and prioritizes your to-dos, so you achieve more in less time.
+//             </p>
+//           </div>
+
+//           {/* Arrow SVG for Small Screens */}
+//           <div className="md:hidden my-4">
+//             <ArrowRight className="text-purple-500 w-10 h-10 rotate-90" />
+//           </div>
+
+//           {/* Motion Div for Animation */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 50 }} // Start off-screen and transparent
+//             animate={{ opacity: 1, y: 0 }}   // Animate to on-screen and fully visible
+//             transition={{ duration: 0.8, ease: "easeOut" }} // Set duration and easing
+//             className="relative w-full md:w-1/2 flex justify-center"
+//           >
+//             <div className="relative w-full max-w-md bg-[#1b1b1e] rounded-xl overflow-hidden p-6 shadow-md">
+//               <img src="/how-it-works.png" alt="How It Works" className="rounded-lg opacity-90 w-full" />
+//               {/* Label */}
+//               <div className="absolute top-4 right-4 flex items-center space-x-2 bg-purple-700 text-white px-3 py-1 rounded-full text-sm">
+//                 <span>Josephine</span>
+//                 <span className="w-5 h-5 bg-gray-300 rounded-full"></span>
+//               </div>
+//               {/* Stats */}
+//               <div className="absolute bottom-4 left-4 bg-[#26262b] p-4 rounded-lg flex items-center space-x-3 shadow-lg">
+//                 <div className="text-white">
+//                   <p className="text-xs md:text-sm text-gray-400">Completed Tasks</p>
+//                   <p className="text-lg md:text-2xl font-bold">25</p>
+//                   <p className="text-xs text-green-400">+33%</p>
+//                 </div>
+//                 <div className="w-10 h-10 bg-[#c4fa57] rounded-full flex items-center justify-center">
+//                   <CheckCircle className="text-purple-700 w-6 h-6" />
+//                 </div>
+//               </div>
+//             </div>
+//           </motion.div>
+//         </WavyBackground>
+//       </section>
+//     </>
+//   );
+// }

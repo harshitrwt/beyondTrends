@@ -40,17 +40,17 @@ const Features = () => {
       {/* Image Showcase */}
       <div className="relative z-10 mt-6 flex flex-wrap justify-center gap-4 ">
         <motion.img 
-          src="https://source.unsplash.com/400x250/?technology,coding"
+          src="https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg"
           alt="Tech Insight"
           className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
         />
         <motion.img 
-          src="https://source.unsplash.com/400x250/?innovation,computer"
+          src="https://www.teamleaseedtech.com/images/news/deccan-chronicle-educators-see-value-in-ai-based-teaching.jpg"
           alt="Innovative Tech"
           className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
         />
         <motion.img 
-          src="https://source.unsplash.com/400x250/?cybersecurity"
+          src="https://i.ytimg.com/vi/QDX-1M5Nj7s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAGyNpxBZFMOsdF71UAYdLW8lHjfQ"
           alt="Cybersecurity"
           className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
         />
@@ -77,7 +77,7 @@ const Features = () => {
       {/* Neutral image */}
       <div className="relative overflow-hidden mb-6">
         <img
-          src="https://placedog.net/150/150"
+          src="https://i.ytimg.com/vi/QDX-1M5Nj7s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAGyNpxBZFMOsdF71UAYdLW8lHjfQ"
           alt="Dog"
           className="w-full h-40 object-cover"
         />
@@ -116,7 +116,7 @@ const Features = () => {
       {/* Neutral image */}
       <div className="relative overflow-hidden mb-6">
         <img
-          src="https://placedog.net/140/140"
+          src="https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg"
           alt="Dog"
           className="w-full h-40 object-cover"
         />
@@ -156,7 +156,7 @@ const Features = () => {
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <img src="https://placedog.net/180/180" alt="Dog" className="w-20 h-20 rounded-full mb-4 mx-auto" />
+          <img src="https://www.teamleaseedtech.com/images/news/deccan-chronicle-educators-see-value-in-ai-based-teaching.jpg" alt="Dog" className="w-20 h-20 rounded-full mb-4 mx-auto" />
           <div>
             <BarChart size={32} className="text-orange-400 mb-6 " />
             <h3 className="text-2xl font-semibold mb-4">Daily Insights</h3>
