@@ -32,51 +32,32 @@ export default function Footer() {
         </div>
 
         {/* Middle Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8 text-sm">
-          {/* Column 1 */}
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="/about-us" className="hover:underline">About Us</a></li>
-              <li><a href="/careers" className="hover:underline">Careers</a></li>
-              <li><a href="/press" className="hover:underline">Press</a></li>
-              <li><a href="/blog" className="hover:underline">Blog</a></li>
-            </ul>
-          </div>
+<div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 mt-8 text-sm">
+  
 
-          {/* Column 2 */}
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2">
-              <li><a href="/help-center" className="hover:underline">Help Center</a></li>
-              <li><a href="/contact-us" className="hover:underline">Contact Us</a></li>
-              <li><a href="/faqs" className="hover:underline">FAQs</a></li>
-              <li><a href="/terms-of-service" className="hover:underline">Terms of Service</a></li>
-            </ul>
-          </div>
+  {/* Column 3 */}
+  <div>
+    <h3 className="font-semibold mb-2 text-left">Resources</h3>
+    <ul className="space-y-1 text-left">
+      <li><a href="/guides" className="hover:underline">Guides</a></li>
+      <li><a href="/case-studies" className="hover:underline">Case Studies</a></li>
+      <li><a href="/whitepapers" className="hover:underline">Whitepapers</a></li>
+      <li><a href="/events" className="hover:underline">Events</a></li>
+    </ul>
+  </div>
 
-          {/* Column 3 */}
-          <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li><a href="/guides" className="hover:underline">Guides</a></li>
-              <li><a href="/case-studies" className="hover:underline">Case Studies</a></li>
-              <li><a href="/whitepapers" className="hover:underline">Whitepapers</a></li>
-              <li><a href="/events" className="hover:underline">Events</a></li>
-            </ul>
-          </div>
+  {/* Column 4 */}
+  <div>
+    <h3 className="font-semibold mb-2 text-left">Legal</h3>
+    <ul className="space-y-1 text-left">
+      <li><a href="/privacy-policy" className="hover:underline">Privacy Policy</a></li>
+      <li><a href="/cookie-policy" className="hover:underline">Cookie Policy</a></li>
+      <li><a href="/disclaimer" className="hover:underline">Disclaimer</a></li>
+      <li><a href="/accessibility-statement" className="hover:underline">Accessibility Statement</a></li>
+    </ul>
+  </div>
+</div>
 
-          {/* Column 4 */}
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li><a href="/privacy-policy" className="hover:underline">Privacy Policy</a></li>
-              <li><a href="/cookie-policy" className="hover:underline">Cookie Policy</a></li>
-              <li><a href="/disclaimer" className="hover:underline">Disclaimer</a></li>
-              <li><a href="/accessibility-statement" className="hover:underline">Accessibility Statement</a></li>
-            </ul>
-          </div>
-        </div>
 
         {/* Bottom Section */}
         <div className="mt-8 text-center text-xs text-gray-500">

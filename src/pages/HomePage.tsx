@@ -60,18 +60,10 @@ function Home() {
                             <a href="#" className="hover:text-gray-300">Features</a>
                             <a href="#" className="hover:text-gray-300">Pricing</a>
                             <a href="#" className="hover:text-gray-300">Resources</a>
-                            <button className="flex items-center gap-2 hover:text-gray-300">
-                                Solutions <ChevronDown size={16} />
-                            </button>
                         </div>
 
-                        {/* Desktop Auth Buttons */}
-                        <div className="hidden md:flex items-center gap-4">
-                            <button className="px-4 py-2 hover:text-gray-300">Sign in</button>
-                            <button className="px-6 py-2 bg-white text-black rounded-full hover:bg-gray-200">
-                                Start Free Trial
-                            </button>
-                        </div>
+
+
                     </div>
 
                     {/* Mobile Menu */}
@@ -80,16 +72,7 @@ function Home() {
                             <a href="#" className="block hover:text-gray-300">Features</a>
                             <a href="#" className="block hover:text-gray-300">Pricing</a>
                             <a href="#" className="block hover:text-gray-300">Resources</a>
-                            <button className="flex items-center gap-2 hover:text-gray-300 w-full">
-                                Solutions <ChevronDown size={16} />
-                            </button>
-
-                            <div className="pt-4 space-y-4 border-t border-gray-800">
-                                <button className="w-full px-4 py-2 hover:text-gray-300">Sign in</button>
-                                <button className="w-full px-6 py-2 bg-white text-black rounded-full hover:bg-gray-200">
-                                    Start Free Trial
-                                </button>
-                            </div>
+                            
                         </div>
                     )}
                 </nav>
@@ -132,24 +115,40 @@ function Home() {
 
 
 
-                        {/* Hero Heading */}
                         <h1 className="text-[21px] md:text-[40px] lg:text-[64px] font-semibold mb-[16px] md:mb-[24px] leading-tight">
-                        Grow faster, smarter, and stay ahead with <br></br> content <span className='px-3 border-1 border-purple-600 rounded-xl bg-purple-600'>few people knows</span>
+                            Grow faster, smarter, and Stay ahead
+                            {/* Mobile version (inline) */}
+                            <span className="inline sm:hidden">
+                                {" "}tech{" "}
+                                <span className="inline-block px-2 py-1 border border-purple-600 rounded-full bg-purple-600 leading-none">
+                                    few people knows
+                                </span>
+                            </span>
+
+                            {/* Desktop version */}
+                            <span className="hidden sm:block">
+                                with tech{" "}
+                                <span className="inline-block mt-1 px-4 md:py-2 border border-purple-600 rounded-full bg-purple-600 leading-none md:text-[50px]">
+                                    few people knows
+                                </span>
+                            </span>
                         </h1>
 
+
+
                         {/* Hero Subtext */}
-                        <p className="text-[16px] md:text-lg lg:text-xl text-[#888888] mb-[32px] max-w-xl mx-auto leading-relaxed">
-                            The all-in-one platform that helps you scale your business with powerful analytics, automation, and personalized insights.
+                        <p className="text-[12px] md:text-lg lg:text-xl text-[#888888] mb-[32px] max-w-xl mx-auto leading-relaxed">
+                            Discover the best Tech! whether it's an underrated article, video, or repo. Let's help you find something worth your attention
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-[12px] md:gap-[16px] mb-[64px] md:mb-[96px]">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-[12px] md:gap-[16px] mb-[64px] md:mb-[96px] md:w-52 md:mx-auto">
                             <button
-                                className="md:px-[24px] md:py-[10px] px-[10px] py-[7px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA]"
+                                className="md:px-[24px] md:py-[10px] px-[10px] py-[7px] bg-white md:w-[70vh]  text-black rounded-full hover:bg-[#EAEAEA] font-semibold"
                                 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
                             >
                                 Get Started
-                                <ArrowRight className='w-10 h-10 rounded-full bg-purple-600 px-1 cursor-pointer text-white' size={20} />
+                                <ArrowRight className='w-10 h-10 rounded-full bg-purple-600 px-1 cursor-pointer text-white md:ml-6' size={20} />
                             </button>
 
                         </div>
@@ -198,10 +197,10 @@ function Home() {
                     <Features />
                     <Working />
                     <div className="max-w-[1200px] mx-auto flex items-center justify-between px-4 mb-10">
-  <h1 className="text-5xl font-semibold leading-tight self-start text-left">
-    What People Say?
-  </h1>
-</div>
+                        <h1 className="text-4xl md:text-5xl font-semibold leading-tight self-start text-left mt-20 md:mt-2">
+                            What People Say?
+                        </h1>
+                    </div>
 
 
 
@@ -223,7 +222,7 @@ function Home() {
                         direction="left"
                         speed="normal"
                         pauseOnHover={true}
-                        className="my-custom-class" />
+                        className="mb-16" />
 
                     <CTAButton />
 

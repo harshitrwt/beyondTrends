@@ -1,70 +1,100 @@
 import { motion } from 'framer-motion';
-import { Palette, Zap, Globe, BarChart, Clock, Sparkles, Flame, ArrowRightCircle} from 'lucide-react';
+import { Palette, Zap, Globe,  Clock, Sparkles, Flame, ArrowRightCircle} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
+// Floating icon animation variants
+const floatVariants = {
+  animate: {
+    y: [0, -20, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
 const Features = () => {
   return (
     <section className="container mx-auto px-4 py-16 max-w-[1200px] md:mb-20">
-      <h2 className="md:text-[7vh] text-3xl font-semibold text-center md:mb-32 mb-16 shadow-2xl">
+      <h2 className="md:text-[7vh] text-3xl font-semibold text-center md:mb-10 mb-16 shadow-2xl">
         Features
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {/* Main Feature Card */}
+        
         <motion.div  
-      className="md:col-span-2 row-span-2 relative rounded-sm bg-gradient-to-br bg-[#000007]  shadow-purple-500/50 p-8 overflow-hidden shadow-xl flex flex-col justify-center items-center text-white"
+      className="md:col-span-2 row-span-2 relative rounded-sm bg-gradient-to-br from-[#0a0a23] to-[#000007] shadow-purple-500/50 p-8 overflow-hidden shadow-xl flex flex-col justify-center items-center text-white hidden md:flex"
       whileHover={{ scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Background Decorative Elements */}
+      {/* Subtle background image overlay */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://images.unsplash.com/photo-1600673645627-1c47394132ac')] bg-cover"></div>
-      <motion.div className="absolute top-10 left-10 text-purple-400" animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
-        <Sparkles size={80} className='hidden md:block text-purple-400'/>
-      </motion.div>
-      <motion.div className="absolute bottom-10 right-10 text-purple-400" animate={{ rotate: -360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
-        <Flame size={80} />
-      </motion.div>
-
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center text-center">
-        <h3 className="text-4xl  bg-clip-text bg-gradient-to-r text-white font-semibold drop-shadow-lg">
-          Discover Hidden Tech Gems
-        </h3>
-        <p className="text-lg mt-4 px-6 max-w-lg text-gray-400 hidden md:block">
-          Unearth lesser-known but powerful insights in tech. From cutting-edge research to deep-dive blogs, we bring you the most underrated yet impactful content.
-        </p>
-      </div>
-
-      {/* Image Showcase */}
-      <div className="relative z-10 mt-6 flex flex-wrap justify-center gap-4 ">
-        <motion.img 
-          src="https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg"
-          alt="Tech Insight"
-          className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
-        />
-        <motion.img 
-          src="https://www.teamleaseedtech.com/images/news/deccan-chronicle-educators-see-value-in-ai-based-teaching.jpg"
-          alt="Innovative Tech"
-          className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
-        />
-        <motion.img 
-          src="https://i.ytimg.com/vi/QDX-1M5Nj7s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAGyNpxBZFMOsdF71UAYdLW8lHjfQ"
-          alt="Cybersecurity"
-          className="w-48 h-32 rounded-lg shadow-lg hover:scale-105 transition duration-300"
-        />
-      </div>
-
-      {/* CTA Button */}
-      <Link to="/ArticlesPage">
-      <button className="mt-6 px-6 py-3 bg-purple-500 text-white rounded-full font-semibold text-lg hover:bg-purple-600 transition-all duration-300 shadow-lg hidden md:block">
-        Explore Now
-      </button>
-      </Link>
       
-    </motion.div>
+      {/* Floating AI/ML icons */}
+      <motion.img
+        src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png"
+        alt="AI Brain"
+        className="absolute left-8 top-8 w-12 opacity-80"
+        variants={floatVariants}
+        animate="animate"
+      />
+      <motion.img
+        src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png"
+        alt="Neural Network"
+        className="absolute right-8 top-16 w-10 opacity-80"
+        variants={floatVariants}
+        animate="animate"
+        style={{ animationDelay: "1s" }}
+      />
+      <motion.img
+        src="https://cdn-icons-png.flaticon.com/512/3771/3771632.png"
+        alt="Data"
+        className="absolute left-16 bottom-10 w-10 opacity-70"
+        variants={floatVariants}
+        animate="animate"
+        style={{ animationDelay: "2s" }}
+      />
 
+      {/* Glassy, glowing card content */}
+      <div className="relative z-10 bg-white/5 backdrop-blur-md rounded-xl p-8 md:p-12 shadow-2xl border border-purple-600/30 w-full max-w-2xl flex flex-col items-center">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold mb-4 text-center bg-gradient-to-r from-[#c4fa57] via-purple-400 to-[#c4fa57] bg-clip-text text-transparent"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+        >
+          Artificial Intelligence & Machine Learning
+        </motion.h2>
+        <motion.p
+          className="text-lg md:text-xl text-gray-200 mb-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+        >
+          AI and ML are transforming the world-enabling machines to learn, adapt, and solve complex problems. From natural language processing to predictive analytics, these technologies power innovations in healthcare, finance, robotics, and beyond.
+        </motion.p>
+        <motion.div
+          className="flex gap-4 justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.7 }}
+        >
+          <span className="px-3 py-1 rounded-full bg-[#c4fa57]/20 text-[#c4fa57] font-semibold text-sm shadow">
+            Deep Learning
+          </span>
+          <span className="px-3 py-1 rounded-full bg-purple-400/20 text-purple-200 font-semibold text-sm shadow">
+            Neural Networks
+          </span>
+          <span className="px-3 py-1 rounded-full bg-[#c4fa57]/20 text-[#c4fa57] font-semibold text-sm shadow">
+            Data Science
+          </span>
+        </motion.div>
+      </div>
+    </motion.div>
 
         {/* Performance Card */}
         <motion.div
@@ -97,12 +127,13 @@ const Features = () => {
         </div>
 
         {/* Circle with arrow icon and hover animation */}
-        <Link to="/VideoPage">
-        <div className="flex justify-center items-center bg-black text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-350">
-            <span className="font-semibold mr-2">Try Now</span>
-            <ArrowRightCircle size={24} className="text-white ml-40" />
-          </div>
-        </Link>
+        <Link to="/ArticlesPage">
+  <div className="flex items-center justify-between bg-black text-white px-6 py-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md">
+    <span className="font-semibold text-lg">Try Now</span>
+    <ArrowRightCircle size={28} className="text-white" />
+  </div>
+</Link>
+
       </div>
     </motion.div>
         {/* Global Card */}
@@ -139,60 +170,101 @@ const Features = () => {
         </div>
 
         {/* "Try Now" text with arrow icon */}
-        <Link to="/VideoPage">
-        <div className="flex justify-center items-center bg-black text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-350">
-            <span className="font-semibold mr-2">Try Now</span>
-            <ArrowRightCircle size={24} className="text-white ml-40" />
-          </div>
-        </Link>
+        <Link to="/RepoPage">
+  <div className="flex items-center justify-between bg-black text-white px-6 py-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md">
+    <span className="font-semibold text-lg">Try Now</span>
+    <ArrowRightCircle size={28} className="text-white" />
+  </div>
+</Link>
+
       </div>
     </motion.div>
 
         {/* Vertical Stats Card */}
         <motion.div
-          className="md:row-span-2 rounded-sm bg-black p-8 flex flex-col justify-between shadow-purple-500/50 shadow-xl"
-          whileHover={{ x: 5 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <img src="https://www.teamleaseedtech.com/images/news/deccan-chronicle-educators-see-value-in-ai-based-teaching.jpg" alt="Dog" className="w-20 h-20 rounded-full mb-4 mx-auto" />
-          <div>
-            <BarChart size={32} className="text-orange-400 mb-6 " />
-            <h3 className="text-2xl font-semibold mb-4">Daily Insights</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span>Active Users</span>
-                <span className="font-mono">24.5k</span>
-              </div>
-              <div className="h-px bg-orange-800/40"></div>
-            </div>
+      className="rounded-sm bg-black p-6 shadow-purple-500/50 shadow-xl"
+      whileHover={{ rotate: 2 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+    >
+      {/* Neutral image */}
+      <div className="relative overflow-hidden mb-6">
+        <img
+          src="https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg"
+          alt="Dog"
+          className="w-full h-40 object-cover"
+        />
+      </div>
+
+      {/* Purple section inside the box */}
+      <div className="bg-purple-600 p-4 rounded-t-xl relative z-10 text-center">
+        <div className="flex flex-col items-center mb-4">
+          {/* Globe Icon and Text */}
+          <div className="flex items-center gap-2 mb-4">
+            <Globe size={30} className="text-black" />
+            <h3 className="text-xl font-semibold text-white">Video Insights</h3>
           </div>
-          <Link to="/RepoPage">
-          <button className="mt-4 px-4 py-2 bg-purple-500 text-white rounded-lg w-full">Try Now</button>
-          </Link>
-          
-        </motion.div>
+
+        </div>
+
+        {/* "Try Now" text with arrow icon */}
+        <Link to="/VideoPage">
+  <div className="flex items-center justify-between bg-black text-white px-6 py-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md">
+    <span className="font-semibold text-lg">Try Now</span>
+    <ArrowRightCircle size={28} className="text-white" />
+  </div>
+</Link>
+
+      </div>
+    </motion.div>
 
         {/* Small Cards Row */}
         <motion.div
-          className="md:col-span-2 rounded-sm bg-black p-6 flex items-center justify-between h-[200px] shadow-purple-500/50 shadow-xl"
-          whileHover={{ scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="flex items-center gap-3">
-            <Clock size={32} className="text-purple-400" />
-            <div>
-              <h4 className="font-medium">24/7 Monitoring</h4>
-              <p className="text-sm text-gray-400">Always active</p>
-              <button className="mt-2 px-4 py-2 bg-purple-500 text-white rounded-lg">Try Now</button>
-            </div>
+  className="md:col-span-2 rounded-sm bg-black p-6 flex items-center justify-between h-[200px] md:h-[400px] shadow-purple-500/50 shadow-xl"
+  whileHover={{ scale: 0.96 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  initial={{ opacity: 0, y: 50 }}
+  transition={{ duration: 0.5, delay: 0.4 }}
+>
+  {/* Left side - image */}
+  <div className="h-full w-1/2 flex items-center justify-center hidden md:block">
+    <img
+      src="https://media.nationthailand.com/uploads/images/md/2024/03/TJlBdqRq5ViN34kgqla6.webp" 
+      alt="Monitoring"
+      className="object-cover h-full w-full rounded"
+    />
+  </div>
+
+  {/* Right side - text + button */}
+  <div className="bg-purple-600 p-4 rounded-xl relative z-10 text-center md:h-full w-full md:w-[45%]">
+        <div className="flex flex-col items-center mb-4">
+          {/* Globe Icon and Text */}
+          <div className="flex items-center gap-2 mb-4">
+            <Globe size={30} className="text-black" />
+            <h3 className="text-xl font-semibold text-white">24/7 News on the Go</h3>
           </div>
-        </motion.div>
-        <h1 className='font-semibold md:text-[10vh] text-0 md:w-[100vh] w-full border 2 border-purple-900 p-5 bg-purple-900 shadow-purple-500/50 shadow-xl'>One Step Solution</h1>
-        
+
+        </div>
+
+        {/* "Try Now" text with arrow icon */}
+        <Link to="/">
+  <div className="flex items-center justify-between bg-black text-white px-6 py-4 rounded-lg cursor-pointer hover:bg-gray-900 transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md">
+    <span className="font-semibold text-lg">Try Now</span>
+    <ArrowRightCircle size={28} className="text-white" />
+  </div>
+</Link>
+
+      </div>
+</motion.div>
+
+
+{/* Match width and alignment with the above card */}
+<div className="md:col-span-2 w-[167vh] rounded-b-xl bg-purple-700 p-5 shadow-purple-500/50 shadow-lg hidden md:block">
+  <h1 className="font-semibold text-white md:text-[9vh] text-[5vh] text-center">One Step Solution</h1>
+</div>
+  
+             
 
 
       </div>

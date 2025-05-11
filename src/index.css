@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+.my-custom-class {
+  @apply text-red-500;
+}
