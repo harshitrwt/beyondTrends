@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { ArrowRightCircle } from 'lucide-react';
 
+// Interface for the article
 interface Article {
-  id: number;
   title: string;
   url: string;
-  time: number;
-  imageUrl: string;
+  publishedAt: string;
+  description: string;
+  urlToImage: string;
 }
 
+// Default image for articles that don't have a valid image
 const defaultImage = 'https://via.placeholder.com/600x400?text=Tech+Article';
 
 const ArticlesPage = () => {
@@ -16,33 +18,26 @@ const ArticlesPage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  // NewsAPI key (replace with your actual API key)
+  const API_KEY = 'YOUR_NEWSAPI_KEY';
+  const PAGE_SIZE = 10; // Number of articles per page
+
   const fetchArticles = async () => {
     setLoading(true);
     try {
-      const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
-      const ids: number[] = await res.json();
-      const topIds = ids.slice((page - 1) * 10, page * 10);
-      const articlesData = await Promise.all(
-        topIds.map(async (id) => {
-          const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-          const data = await res.json();
-          // Fetch image from Unsplash based on the article title
-          const imageRes = await fetch(
-            `https://api.unsplash.com/search/photos?query=${encodeURIComponent(
-              data.title
-            )}&client_id=YOUR_UNSPLASH_ACCESS_KEY`
-          );
-          const imageData = await imageRes.json();
-          const imageUrl = imageData.results[0]?.urls?.regular || defaultImage;
-          return {
-            id: data.id,
-            title: data.title,
-            url: data.url,
-            time: data.time,
-            imageUrl,
-          };
-        })
+      const res = await fetch(
+        `https://newsapi.org/v2/everything?q=technology&apiKey=${API_KEY}&page=${page}&pageSize=${PAGE_SIZE}`
       );
+      const data = await res.json();
+
+      const articlesData = data.articles.map((article: any) => ({
+        title: article.title,
+        url: article.url,
+        publishedAt: article.publishedAt,
+        description: article.description,
+        urlToImage: article.urlToImage || defaultImage, // Fallback image
+      }));
+
       setArticles((prev) => [...prev, ...articlesData]);
     } catch (error) {
       console.error('Error fetching articles:', error);
@@ -62,23 +57,22 @@ const ArticlesPage = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-screen-xl">
-        {articles.map((article) => (
+        {articles.map((article, index) => (
           <a
-            key={article.id}
+            key={index}
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gray-800 rounded-lg p-4 transition-transform transform hover:scale-105"
           >
             <img
-              src={article.imageUrl}
+              src={article.urlToImage}
               alt={article.title}
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
             <h2 className="text-lg font-semibold">{article.title}</h2>
-            <p className="text-gray-400 text-sm">
-              {new Date(article.time * 1000).toDateString()}
-            </p>
+            <p className="text-gray-400 text-sm">{new Date(article.publishedAt).toDateString()}</p>
+            <p className="text-gray-300 text-sm mt-2">{article.description}</p>
           </a>
         ))}
       </div>
@@ -102,4 +96,3 @@ const ArticlesPage = () => {
 };
 
 export default ArticlesPage;
-

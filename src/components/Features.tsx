@@ -259,10 +259,14 @@ const Features = () => {
 </motion.div>
 
 
-{/* Match width and alignment with the above card */}
-<div className="md:col-span-2 w-[167vh] rounded-b-xl bg-purple-700 p-5 shadow-purple-500/50 shadow-lg hidden md:block">
-  <h1 className="font-semibold text-white md:text-[9vh] text-[5vh] text-center">One Step Solution</h1>
-</div>
+     <div className="md:col-span-2 w-[167vh] rounded-b-xl bg-purple-700 p-5 shadow-xl hidden md:block relative overflow-hidden animate-fadeInBounce">
+      {/* Hidden Easter Egg Image */}
+      <img src="path_to_image.png" alt="Easter Egg" className="hidden-easter-egg" />
+      
+      <h1 className="cursive-text md:text-[9vh] text-[5vh] animate-fadeInBounce" data-text="One Step Solution">
+        One Step Solution
+      </h1>
+    </div>
   
              
 

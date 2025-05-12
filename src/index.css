@@ -6,3 +6,73 @@
 .my-custom-class {
   @apply text-red-500;
 }
+
+/* style.css */
+/* Base Animation */
+.animate-fadeInBounce {
+  animation: fadeInBounce 1s ease-out;
+}
+
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+/* Hidden Easter Egg Image */
+.hidden-easter-egg {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  width: 30%;
+  z-index: 10;
+}
+
+.hidden-easter-egg:hover {
+  opacity: 1;
+}
+
+/* Cursive Text with Black Lines on Sides */
+.cursive-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 6vh;  /* Adjust as needed */
+  color: white;
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Makes the pseudo-elements align with text */
+}
+
+/* Left and Right Black Designs */
+.cursive-text::before, .cursive-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15%; /* Adjust for size of the design */
+  height: 5px;
+  background-color: black;
+  transform: translateY(-50%);
+}
+
+.cursive-text::before {
+  left: -20%; /* Adjust for left side design */
+  border-radius: 10px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional, gives it a little depth */
+}
+
+.cursive-text::after {
+  right: -20%; /* Adjust for right side design */
+  border-radius: 10px;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional, gives it a little depth */
+}
+

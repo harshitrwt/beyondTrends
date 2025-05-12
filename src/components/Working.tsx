@@ -25,26 +25,24 @@ export default function Working() {
     <section className="relative w-full max-w-7xl mx-auto my-12 md:my-24 px-4 md:px-8">
 
       {/* Wavy background only for small screens */}
-      {/* Wavy background only for small screens */}
-<div className="block md:hidden">
-  <WavyBackground className="!py-10 px-2">
-    <h1 className="text-center text-3xl font-bold text-white mb-10 leading-tight mt-36 md:mt-0">
-      How It Works
-    </h1>
-    <div className="flex flex-col items-center gap-6">
-      {steps.slice(0, 3).map((step, idx) => ( // Show only first 3 steps
-        <div
-          key={idx}
-          className="bg-gradient-to-br from-purple-700 to-purple-900 w-full p-5 rounded-none shadow-md text-center min-h-[220px] flex flex-col justify-center"
-        >
-          <h3 className="text-2xl font-semibold text-white mb-2">{step.title}</h3>
-          <p className="text-gray-300 text-base leading-relaxed">{step.description}</p>
-        </div>
-      ))}
-    </div>
-  </WavyBackground>
-</div>
-
+      <div className="block md:hidden">
+        <WavyBackground className="!py-10 px-2">
+          <h1 className="text-center text-3xl font-bold text-white mb-10 leading-tight mt-36 md:mt-0">
+            How It Works
+          </h1>
+          <div className="flex flex-col items-center gap-6">
+            {steps.slice(0, 3).map((step, idx) => ( // Show only first 3 steps
+              <div
+                key={idx}
+                className="bg-gradient-to-br from-[#6a4c92] to-[#9b68b2] bg-opacity-70 w-full p-5 rounded-none shadow-md text-center min-h-[220px] flex flex-col justify-center"
+              >
+                <h3 className="text-2xl font-semibold text-white mb-2">{step.title}</h3>
+                <p className="text-gray-300 text-base leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </WavyBackground>
+      </div>
 
       {/* Regular layout for medium and up */}
       <div className="hidden md:block">
@@ -55,7 +53,7 @@ export default function Working() {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex-1 bg-gradient-to-br from-purple-700 to-purple-900 p-8 shadow-md text-center min-h-[260px] flex flex-col justify-center"
+              className="flex-1 bg-gradient-to-br from-[#6a4c92] to-[#9b68b2] bg-opacity-70 p-8 shadow-lg text-center min-h-[260px] flex flex-col justify-center"
             >
               <h3 className="text-2xl font-semibold text-white mb-3">{step.title}</h3>
               <p className="text-gray-300 text-base leading-relaxed">{step.description}</p>
@@ -66,3 +64,4 @@ export default function Working() {
     </section>
   );
 }
+

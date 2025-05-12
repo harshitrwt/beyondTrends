@@ -1,96 +1,111 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CornerUpLeft, SquarePen } from 'lucide-react';
 import StarField from '../components/StarField';
 
 const VideoPage: React.FC = () => {
-  const [articles, setArticles] = useState([
-    { id: 1, title: 'AI Revolution in Tech', image: 'https://elroy.twit.tv/sites/default/files/images/episodes/2023/11/848976/hero/tnw0311_thumbnail_v2.jpg', date: '2025-03-30' },
-    { id: 2, title: 'Quantum Computing Breakthrough', image: 'https://elroy.twit.tv/sites/default/files/images/episodes/2023/11/848976/hero/tnw0311_thumbnail_v2.jpg', date: '2025-03-29' },
-    { id: 3, title: 'Blockchain Trends', image: 'https://elroy.twit.tv/sites/default/files/images/episodes/2023/11/848976/hero/tnw0311_thumbnail_v2.jpg', date: '2025-03-28' },
-  ]);
-  const [filterLatest, setFilterLatest] = useState(true);
-  const [filterDays, setFilterDays] = useState<number | null>(null);
+  const [isSignedUp, setIsSignedUp] = useState(false);
+  const [videos, setVideos] = useState<any[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<{ title: string; videoId: string; thumbnail: string } | null>(null);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
 
-  const handleFilter = (days: number | null) => {
-    setFilterDays(days);
-    setShowFilterOptions(false);
-    let filteredArticles = [...articles];
+  // YouTube API Key (replace with your API key)
+  const API_KEY = 'YOUR_YOUTUBE_API_KEY';
 
-    if (days) {
-      const cutoffDate = new Date();
-      cutoffDate.setDate(cutoffDate.getDate() - days);
-      filteredArticles = filteredArticles.filter(article => new Date(article.date) >= cutoffDate);
-    }
+  // Fetching tech-related videos using YouTube API
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=tech%20innovation&key=${API_KEY}&maxResults=6`
+      );
+      const data = await response.json();
+      const techVideos = data.items.map((item: any) => ({
+        id: item.id.videoId,
+        title: item.snippet.title,
+        thumbnail: item.snippet.thumbnails.high?.url || 'https://via.placeholder.com/150',
+      }));
+      setVideos(techVideos);
+    };
 
-    setArticles(prev =>
-      [...filteredArticles].sort((a, b) =>
-        filterLatest ? new Date(a.date).getTime() - new Date(b.date).getTime() : new Date(b.date).getTime() - new Date(a.date).getTime()
-      )
+    fetchVideos();
+  }, []);
+
+  const handleLoadMore = async () => {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=tech%20innovation&key=${API_KEY}&maxResults=6&pageToken=YOUR_NEXT_PAGE_TOKEN`
     );
+    const data = await response.json();
+    const techVideos = data.items.map((item: any) => ({
+      id: item.id.videoId,
+      title: item.snippet.title,
+      thumbnail: item.snippet.thumbnails.high?.url || 'https://via.placeholder.com/150',
+    }));
+    setVideos((prev) => [...prev, ...techVideos]);
   };
 
-  const handleLoadMore = () => {
-    const moreArticles = [
-      { id: 4, title: 'Cybersecurity Innovations', image: 'https://elroy.twit.tv/sites/default/files/images/episodes/2023/11/848976/hero/tnw0311_thumbnail_v2.jpg', date: '2025-03-27' },
-      { id: 5, title: 'Space Tech Advancements', image: 'https://elroy.twit.tv/sites/default/files/images/episodes/2023/11/848976/hero/tnw0311_thumbnail_v2.jpg', date: '2025-03-26' },
-    ];
-    setArticles((prev) => [...prev, ...moreArticles]);
+  const openVideoModal = (videoId: string, title: string, thumbnail: string) => {
+    setSelectedVideo({ videoId, title, thumbnail });
+    setShowModal(true);
+  };
+
+  const closeVideoModal = () => {
+    setShowModal(false);
   };
 
   return (
     <div className="min-h-screen bg-[#000007] text-white flex flex-col items-center p-6 relative">
       <div className="absolute inset-0 z-[2] pointer-events-none">
-                        <StarField />
-                    </div>
+        <StarField />
+      </div>
+
       {/* Title and Filter Section */}
       <div className="flex justify-between items-center w-full mb-10 md:w-[1200px] md:mb-24 md:mt-5">
-        <h1 className="text-3xl font-bold text-purple-600">Beyond Trends Videos</h1>
-
+        <h1 className="text-3xl font-bold text-purple-600">Beyond Trends Tech Videos</h1>
 
         {/* Filter Button and Options */}
         <div className="relative">
-          
           <SquarePen
-          onClick={() => setShowFilterOptions(!showFilterOptions)}
-          className="w-10 h-10 text-purple-600 cursor-pointer hover:text-purple-500 transition duration-300"
-        />
+            onClick={() => setShowFilterOptions(prev => !prev)}  
+            className="w-10 h-10 text-purple-600 cursor-pointer hover:text-purple-500 transition duration-300"
+          />
           <div className={`absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-xl z-10 overflow-hidden ${showFilterOptions ? '' : 'hidden'}`}>
-            <button
-              onClick={() => handleFilter(7)}
-              className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300"
-            >
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300">
               Last 7 Days
             </button>
-            <button
-              onClick={() => handleFilter(15)}
-              className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300"
-            >
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300">
               Last 15 Days
             </button>
-            <button
-              onClick={() => handleFilter(30)}
-              className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300"
-            >
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300">
               Last 30 Days
             </button>
             <button
-              onClick={() => handleFilter(null)}
+              onClick={handleLoadMore}
               className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-700 transition duration-300"
             >
-              All Time
+              Load More
             </button>
           </div>
         </div>
       </div>
 
-      {/* Article Grid */}
+      {/* Video Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-screen-xl">
-        {articles.map((article) => (
-          <div key={article.id} className="bg-black shadow-md shadow-purple-600 rounded-lg p-4 transition-transform transform hover:scale-105">
-            <img src={article.image} alt={article.title} className="w-full h-auto rounded-lg mb-4" />
-            <h2 className="text-lg font-semibold">{article.title}</h2>
-            <p className="text-gray-400 text-sm">{new Date(article.date).toDateString()}</p>
+        {videos.map((video) => (
+          <div
+            key={video.id}
+            className="bg-black shadow-md shadow-purple-600 rounded-lg p-4 transition-transform transform hover:scale-105 cursor-pointer"
+            onClick={() => openVideoModal(video.id, video.title, video.thumbnail)}
+          >
+            <img src={video.thumbnail} alt={video.title} className="w-full h-auto rounded-lg mb-4" />
+            <h2 className="text-lg font-semibold">{video.title}</h2>
+
+            {/* Bookmark Icon (Visible only if signed up) */}
+            <button
+              className={`mt-3 w-full text-center py-2 border rounded-md ${isSignedUp ? 'bg-purple-600 text-black' : 'bg-gray-600 text-white'} disabled:opacity-50`}
+              disabled={!isSignedUp}
+            >
+              {isSignedUp ? 'Add to Bookmark' : 'Sign Up to Bookmark'}
+            </button>
           </div>
         ))}
       </div>
@@ -110,81 +125,37 @@ const VideoPage: React.FC = () => {
           className="w-10 h-10 text-purple-600 cursor-pointer hover:text-purple-500 transition duration-300"
         />
       </div>
+
+      {/* Modal for Video */}
+      {showModal && selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-20">
+          <div className="relative bg-black border-4 border-purple-600 p-6 rounded-lg w-full max-w-4xl">
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-2 right-2 text-white text-xl font-bold"
+            >
+              X
+            </button>
+            <h2 className="text-2xl text-white mb-4">{selectedVideo.title}</h2>
+            <div className="relative pb-[56.25%]">
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.videoId}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+            <img
+              src={selectedVideo.thumbnail || 'https://via.placeholder.com/150'}
+              alt={selectedVideo.title}
+              className="absolute inset-0 w-full h-full opacity-30 rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default VideoPage;
-
-// import { useEffect, useState } from 'react';
-// import { ArrowRightCircle } from 'lucide-react';
-
-// const getImage = (url: string): string => `https://image.thum.io/get/width/600/crop/500/noanimate/${url}`;
-
-// const VideoPage = () => {
-//   interface Article {
-//     id: number;
-//     title: string;
-//     url: string;
-//     time: number;
-//   }
-  
-//   const [articles, setArticles] = useState<Article[]>([]);
-//   const [showFilterOptions, setShowFilterOptions] = useState(false);
-
-//   useEffect(() => {
-//     fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
-//       .then((res) => res.json())
-//       .then((ids) => {
-//         const top10 = ids.slice(0, 10);
-//         return Promise.all(
-//           top10.map((id: number) =>
-//             fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then((res) => res.json())
-//           )
-//         );
-//       })
-//       .then((articlesData) => {
-//         setArticles(articlesData);
-//       });
-//   }, []);
-
-//   return (
-//     <div className="min-h-screen bg-[#000007] text-white flex flex-col items-center p-6 relative">
-//       <div className="flex justify-between items-center w-full mb-6 md:w-[1200px] md:text-3xl font-semibold">
-//         <h1 className="text-3xl font-bold text-purple-600 ">Beyond Trends Videos</h1>
-//       </div>
-
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-screen-xl">
-//         {articles.map((article) => (
-//           <a 
-//             key={article.id} 
-//             href={article.url} 
-//             target="_blank" 
-//             rel="noopener noreferrer"
-//             className="bg-gray-800 rounded-lg p-4 transition-transform transform hover:scale-105"
-//           >
-//             <img 
-//               src={getImage(article.url)} 
-//               alt={article.title} 
-//               className="w-full h-40 object-cover rounded-lg mb-4"
-//             />
-//             <h2 className="text-lg font-semibold">{article.title}</h2>
-//             <p className="text-gray-400 text-sm">{new Date(article.time * 1000).toDateString()}</p>
-//           </a>
-//         ))}
-//       </div>
-
-//       <div className="absolute bottom-6 right-6">
-//         <ArrowRightCircle
-//           onClick={() => window.location.href = '/'}
-//           className="w-10 h-10 text-purple-600 cursor-pointer hover:text-purple-500 transition duration-300"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VideoPage;
-
-
-
